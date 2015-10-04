@@ -5,11 +5,11 @@ less_groceries = $('.less')
 more_groceries = $('.more')
 
 less_groceries.each((index) ->
-  less = $(this) 
-  less.on('click', (event) -> 
+  less = $(this)
+  less.on('touchstart click', (event) ->
     gid = less.parent().data('gid')
     $.post(
-      '/groceries/quantity',
+      '/v1/quantity',
       { 'gid': gid, 'direction': 'down'}
     ).done((data) ->
       alert('one down!')
@@ -18,14 +18,16 @@ less_groceries.each((index) ->
 )
 
 more_groceries.each((index) ->
-  more = $(this) 
-  more.on('click', (event) -> 
+  more = $(this)
+  more.on('touchstart click', (event) ->
     gid = more.parent().data('gid')
     $.post(
-      '/groceries/quantity',
+      '/v1/quantity',
       { 'gid': gid, 'direction': 'up'}
     ).done((data) ->
       alert('one up!')
     )
   )
 )
+
+

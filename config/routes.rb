@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'house_hold/index'
 
   resources :groceries
+
+  post 'v1/quantity', to: 'groceries#quantity'
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
