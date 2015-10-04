@@ -61,6 +61,17 @@ class GroceriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def quantity
+    @grocery = Grocery.find(params[:gid])
+    diff_val = param[:direction] == 'up' ? 1 : -1
+    @grocery.quantity += diff_val
+    @grocery.save
+
+    respond_to do |format|
+      format.json { render :quantity, status: :created }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -70,6 +81,6 @@ class GroceriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def grocery_params
-      params.require(:grocery).permit(:name, :quantity, :resident_id)
+      params.permit(:name, :quantity, :resident_id, :gid, :grocery, :direction)
     end
 end
