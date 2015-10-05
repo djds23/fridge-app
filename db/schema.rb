@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002015731) do
+ActiveRecord::Schema.define(version: 20151004232209) do
 
   create_table "groceries", force: :cascade do |t|
     t.string   "name"
-    t.integer  "quantity"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "quantity",    default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "resident_id"
   end
 

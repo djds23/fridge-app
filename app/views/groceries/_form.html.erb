@@ -11,18 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="row field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="row field">
     <%= f.label :quantity %><br>
     <%= f.number_field :quantity %>
   </div>
-  <div class="field">
+  <div class="row field">
     <%= f.select :resident_id, options_for_select(@residents.map{ |r| [r.username, r.id]}, @residents.first.username) %> 
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row actions">
+    <%= f.submit class: 'button expand' %>
   </div>
 <% end %>

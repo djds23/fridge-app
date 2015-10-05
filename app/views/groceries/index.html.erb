@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Groceries</h1>
+<h1 class='fridge-header'>What's in the fridge?</h1>
 
-<table>
+<table class='grocery-table'>
   <thead>
     <tr>
-      <th></th>
+      <th class='less-header'></th>
       <th>Name</th>
-      <th>Owner</th>
       <th>Quantity</th>
-      <th></th>
+      <th>Owner</th>
+      <th class='more-header'></th>
     </tr>
   </thead>
 
@@ -18,7 +18,7 @@
       <tr data-gid="<%= grocery.id %>">
         <td class="less">-</td>
         <td><%= grocery.name %></td>
-        <td><%= grocery.quantity %></td>
+        <td id="<%= "#{grocery.id}-quantity" %>"><%= grocery.quantity %></td>
         <td><%= grocery.resident.try(:username) %></td>
         <td class="more">+</td>
       </tr>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Grocery', new_grocery_path %>
+<%= link_to 'Something new?', new_grocery_path, id: 'new-grocery' %>
