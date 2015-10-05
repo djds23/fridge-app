@@ -29,11 +29,12 @@ class GroceriesController < ApplicationController
   # POST /groceries
   # POST /groceries.json
   def create
+    byebug
     @grocery = Grocery.new(grocery_params)
 
     respond_to do |format|
       if @grocery.save
-        format.html { redirect_to @grocery, notice: 'Grocery was successfully created.' }
+        format.html { redirect_to groceries_url }
         format.json { render :show, status: :created, location: @grocery }
       else
         format.html { render :new }
@@ -84,6 +85,12 @@ class GroceriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def grocery_params
-      params.permit(:name, :quantity, :resident_id, :grocery, :gid, :direction)
+      params.require(:grocery).permit(
+        :name, 
+        :quantity, 
+        :resident_id, 
+        :gid, 
+        :direction,
+      )
     end
 end

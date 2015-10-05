@@ -14,7 +14,7 @@ $(document).on('ready', (event) ->
       associated_quantity_td = $('#' + gid.toString() + '-quantity')
       $.post(
         '/v1/quantity',
-        { 'gid': gid, 'direction': 'down'}
+        {'grocery': { 'gid': gid, 'direction': 'down'}}
       ).done((data) ->
         new_quantity = data.quantity
         if new_quantity > 0
@@ -32,7 +32,7 @@ $(document).on('ready', (event) ->
       associated_quantity_td = $('#' + gid.toString() + '-quantity')
       $.post(
         '/v1/quantity',
-        { 'gid': gid, 'direction': 'up'}
+        {'grocery': { 'gid': gid, 'direction': 'up'}}
       ).done((data) ->
         associated_quantity_td.html(data.quantity)
       )

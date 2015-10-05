@@ -16,17 +16,18 @@
   <tbody>
     <% @groceries.each do |grocery| %>
       <tr data-gid="<%= grocery.id %>">
-        <td class="less">-</td>
+        <td class="less"><i class="fi-minus"></i></td>
         <td><%= grocery.name %></td>
         <td id="<%= "#{grocery.id}-quantity" %>"><%= grocery.quantity %></td>
         <td><%= grocery.resident.try(:username) %></td>
-        <td class="more">+</td>
+        <td class="more"><i class="fi-plus"></i></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<footer class='footer'>
 <%= link_to 'Something new?', new_grocery_path, id: 'new-grocery' %>
-<%= link_to 'Out of Stock!', controller: :groceries, action: :outofstock, id: 'new-grocery' %>
+<%= link_to 'Out of Stock!', controller: :groceries, action: :outofstock %>
+</footer>
