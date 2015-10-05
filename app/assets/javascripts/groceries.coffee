@@ -9,21 +9,25 @@ $(document).on('ready', (event) ->
 
   less_groceries.each((index) ->
     less = $(this)
-    less.on('touchstart click', (event) ->
+    less.on('click', (event) ->
       gid = less.parent().data('gid')
       associated_quantity_td = $('#' + gid.toString() + '-quantity')
       $.post(
         '/v1/quantity',
         { 'gid': gid, 'direction': 'down'}
       ).done((data) ->
-        associated_quantity_td.html(data.quantity)
+        new_quantity = data.quantity
+        if new_quantity > 0
+          associated_quantity_td.html(new_quantity)
+        else
+          less.parent().hide()    
       )
     )
   )
 
   more_groceries.each((index) ->
     more = $(this)
-    more.on('touchstart click', (event) ->
+    more.on('click', (event) ->
       gid = more.parent().data('gid')
       associated_quantity_td = $('#' + gid.toString() + '-quantity')
       $.post(

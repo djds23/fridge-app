@@ -10,22 +10,26 @@ $more-color: #b2d8b2;
 }
 
 .less-header {
-  width: 30%;
+  width: 5em;
 }
 
 .more-header {
-  width: 30%;
+  width: 5em;
 }
 
 .grocery-table {
   width: 100%;
   
   td {
+    height: 50px;
     text-align: center;
+    font-size: 28px; 
   }
 
   th {
+    height: 50px;
     text-align: center;
+    font-size: 28px;
   }
 }
 
@@ -37,6 +41,8 @@ $more-color: #b2d8b2;
 .less {
   background-color: $less-color;
 }
+
 #new-grocery {
   padding: 20px;
+  font-size: 18px;
 }

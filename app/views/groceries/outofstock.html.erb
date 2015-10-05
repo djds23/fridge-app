@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<% if @groceries.present? %>
+  <h1 class='fridge-header'>Gotta pick up more of this!</h1>
+  <table class='grocery-table'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Owner</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @groceries.each do |grocery| %>
+        <tr data-gid="<%= grocery.id %>">
+          <td><%= grocery.name %></td>
+          <td><%= grocery.resident.try(:username) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h1 class='fridge-header'>All stocked!</h1>
+<% end %>
+
+<br>
+
+<div class='row'>
+  <%= link_to 'Back', groceries_path, class: 'button expand' %>
+</div>
