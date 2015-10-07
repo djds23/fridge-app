@@ -1,31 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <h1 class='fridge-header'>What's in the fridge?</h1>
-
-<table class='grocery-table'>
-  <thead>
-    <tr>
-      <th class='less-header'></th>
-      <th>Name</th>
-      <th>Quantity</th>
-      <th>Owner</th>
-      <th class='more-header'></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <ul data-role="listview" id="grocery-list" >
     <% @groceries.each do |grocery| %>
-      <tr data-gid="<%= grocery.id %>">
-        <td class="less"><i class="fi-minus"></i></td>
-        <td><%= grocery.name %></td>
-        <td id="<%= "#{grocery.id}-quantity" %>"><%= grocery.quantity %></td>
-        <td><%= grocery.resident.try(:username) %></td>
-        <td class="more"><i class="fi-plus"></i></td>
-      </tr>
+      <li class='grocery' data-gid='<%= grocery.id %>'>
+        <%= grocery.name %>
+      </li>
     <% end %>
-  </tbody>
-</table>
-
+  </ul>
 <br>
 <footer class='footer'>
 <%= link_to 'Something new?', new_grocery_path, id: 'new-grocery' %>

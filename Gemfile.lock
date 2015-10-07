@@ -54,6 +54,7 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.6.0)
+    fastclick-rails (1.0.1)
     foundation-icons-sass-rails (3.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
@@ -152,6 +153,7 @@ DEPENDENCIES
   annotate
   byebug
   coffee-rails (~> 4.1.0)
+  fastclick-rails
   foundation-icons-sass-rails
   foundation-rails
   jbuilder (~> 2.0)
