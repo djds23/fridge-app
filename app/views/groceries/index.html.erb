@@ -2,8 +2,14 @@
 
 <h1 class='fridge-header'>What's in the fridge?</h1>
   <ul data-role="listview" id="grocery-list" >
-    <% @groceries.each do |grocery| %>
-      <li class='grocery' data-gid='<%= grocery.id %>'>
+    <% @in_stock.each do |grocery| %>
+      <li class='grocery in-stock' data-gid='<%= grocery.id %>'>
+        <%= grocery.name %>
+      </li>
+    <% end %>
+
+    <% @running_low.each do |grocery| %>
+      <li class='grocery running-low' data-gid='<%= grocery.id %>'>
         <%= grocery.name %>
       </li>
     <% end %>

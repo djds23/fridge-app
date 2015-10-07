@@ -4,11 +4,12 @@ class GroceriesController < ApplicationController
   # GET /groceries
   # GET /groceries.json
   def index
-    @groceries = Grocery.where('quantity > 0')
+    @in_stock = Grocery.in_stock
+    @running_low = Grocery.running_low
   end
 
   def outofstock
-    @groceries = Grocery.where('quantity <= 0')
+    @groceries = Grocery.out_of_stock
   end
 
   # GET /groceries/1

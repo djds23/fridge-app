@@ -16,8 +16,7 @@
     <%= f.text_field :name %>
   </div>
   <div class="row field">
-    <%= f.label :quantity %><br>
-    <%= f.number_field :quantity %>
+    <%= f.select :quantity, options_for_select(@grocery.status_hash.invert.to_a) %> 
   </div>
   <div class="row field">
     <%= f.select :resident_id, options_for_select(@residents.map{ |r| [r.username, r.id]}, @residents.first.username) %> 
