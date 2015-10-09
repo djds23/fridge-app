@@ -38,6 +38,12 @@ class Grocery < ActiveRecord::Base
     }
   end
 
+  def options
+    status_hash.map do |quantity, status|
+      [Quantities.const_get(status), quantity]
+    end
+  end
+
   def status
     Quantites.const_get(status_hash[self.quantity])
   end
