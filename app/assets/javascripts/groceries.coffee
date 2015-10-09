@@ -3,5 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on('ready', (event) ->
-  groceries = $('.grocery-list').listview('option', 'theme', 'b')
+  groceries = $('.grocery-list')
+  groceries.listview('option', 'theme', 'b')
 )

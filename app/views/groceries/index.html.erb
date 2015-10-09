@@ -4,7 +4,7 @@
   <ul data-role="listview" id="grocery-list" >
     <% @in_stock.each do |grocery| %>
       <li class='grocery in-stock' data-gid='<%= grocery.id %>'>
-        <%= grocery.name %>
+        <%= link_to grocery.name, grocery_path(grocery) %>
       </li>
     <% end %>
 

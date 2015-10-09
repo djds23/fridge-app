@@ -24,7 +24,7 @@ class Grocery < ActiveRecord::Base
   scope :running_low, -> { where('quantity = 1')}
   scope :out_of_stock, -> { where('quantity = 0')}
 
-  module Quantites
+  module Quantities
     IN_STOCK     = 'In Stock'
     RUNNING_LOW  = 'Running Low'
     OUT_OF_STOCK = 'Out of Stock'
@@ -45,7 +45,7 @@ class Grocery < ActiveRecord::Base
   end
 
   def status
-    Quantites.const_get(status_hash[self.quantity])
+    Quantities.const_get(status_hash[self.quantity])
   end
 
   def oos?
