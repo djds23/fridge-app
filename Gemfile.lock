@@ -63,6 +63,7 @@ GEM
       sass (>= 3.3.0, < 3.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    hammerjs-rails (2.0.4)
     i18n (0.7.0)
     jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
@@ -71,8 +72,6 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    jquery_mobile_rails (1.4.5)
-      railties (>= 3.1.0)
     json (1.8.3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -156,9 +155,9 @@ DEPENDENCIES
   fastclick-rails
   foundation-icons-sass-rails
   foundation-rails
+  hammerjs-rails
   jbuilder (~> 2.0)
   jquery-rails
-  jquery_mobile_rails
   puma
   rails (= 4.2.1)
   sass-rails (~> 5.0)

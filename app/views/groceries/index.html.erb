@@ -1,10 +1,12 @@
+<div class="row">
+  <div class="small-12 large-12 columns">
 <p id="notice"><%= notice %></p>
 
 <h1 class='fridge-header'>What's in the fridge?</h1>
-  <ul data-role="listview" id="grocery-list" >
+  <ul id="grocery-list" >
     <% @in_stock.each do |grocery| %>
       <li class='grocery in-stock' data-gid='<%= grocery.id %>'>
-        <%= link_to grocery.name, grocery_path(grocery) %>
+        <%= link_to grocery.name, grocery_path(grocery), class: 'button [radius round]' %>
       </li>
     <% end %>
 
@@ -19,3 +21,5 @@
 <%= link_to 'Something new?', new_grocery_path, id: 'new-grocery' %>
 <%= link_to 'Out of Stock!', controller: :groceries, action: :outofstock %>
 </footer>
+</div>
+</div>

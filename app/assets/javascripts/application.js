@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.mobile
 //= require fastclick
 //= require foundation
+//= require hammer
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
