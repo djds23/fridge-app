@@ -18,5 +18,9 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
-new FastClick(document.body);
+if ('addEventListener' in document) {
+  document.addEventListener('DOMContentLoaded', function() {
+    FastClick.attach(document.body);
+  }, false);
+}
 

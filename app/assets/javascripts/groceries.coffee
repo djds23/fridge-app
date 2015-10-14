@@ -13,6 +13,6 @@ swipeElementFactory = (element) ->
 $(document).on('ready', (event) ->
   groceries = $('#grocery-list')
   groceries.children().each( (item) ->
-    swipeElemenrFactory(this)
+    swipeElementFactory(this)
   )
 )

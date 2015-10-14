@@ -6,10 +6,7 @@ class GroceriesController < ApplicationController
   def index
     @in_stock = Grocery.in_stock
     @running_low = Grocery.running_low
-  end
-
-  def outofstock
-    @groceries = Grocery.out_of_stock
+    @out_of_stock = Grocery.out_of_stock
   end
 
   # GET /groceries/1
@@ -30,7 +27,6 @@ class GroceriesController < ApplicationController
   # POST /groceries
   # POST /groceries.json
   def create
-    byebug
     @grocery = Grocery.new(grocery_params)
 
     respond_to do |format|
