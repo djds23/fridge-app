@@ -22,6 +22,7 @@ class GroceriesController < ApplicationController
 
   # GET /groceries/1/edit
   def edit
+    @residents = HouseHold.first.residents
   end
 
   # POST /groceries

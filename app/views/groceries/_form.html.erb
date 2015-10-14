@@ -19,7 +19,7 @@
     <%= f.select :quantity, options_for_select(@grocery.options) %> 
   </div>
   <div class="row field">
-    <%= f.select :resident_id, options_for_select(@residents.map{ |r| [r.username, r.id]}, @residents.first.username) %> 
+    <%= f.select :resident_id, options_for_select(@residents.map{ |r| [r.username, r.id]}) %> 
   </div>
   <div class="row actions">
     <%= f.submit class: 'button expand' %>
