@@ -6,7 +6,7 @@ swipeElementFactory = (element) ->
   hammer.on('swiperight', (event) ->
     $.post(
       '/v1/quantity',
-      { 'gid': element.dataset.gid, 'direction': 'up'}
+      {'grocery': {'gid': element.dataset.gid, 'direction': 'up'}}
     ).done((data) ->
       alert('one up!')
     ) 
@@ -14,7 +14,7 @@ swipeElementFactory = (element) ->
   hammer.on('swipeleft', (event) ->
     $.post(
       '/v1/quantity',
-      { 'gid': element.dataset.gid, 'direction': 'down'}
+      {'grocery': { 'gid': element.dataset.gid, 'direction': 'down'}}
     ).done((data) ->
       alert('one down!')
     )
