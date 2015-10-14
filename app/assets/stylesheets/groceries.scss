@@ -11,11 +11,7 @@ $more-color: #b2d8b2;
 
 .grocery {
   font-size: 5em;
-  line-height: 3em;
-}
-
-.fridge-header {
-  text-align: center;
+  line-height: 2.2em;
 }
 
 .less-header {
@@ -26,87 +22,4 @@ $more-color: #b2d8b2;
   width: 5em;
 }
 
-.grocery-table {
-  width: 100%;
-  
-  td {
-    height: 50px;
-    text-align: center;
-    font-size: 28px; 
-  }
-
-  th {
-    height: 50px;
-    text-align: center;
-    font-size: 28px;
-  }
-}
-
-
-.more {
-  background-color: $more-color;
-}
-
-.less {
-  background-color: $less-color;
-}
-
-#new-grocery {
-  padding: 20px;
-  font-size: 18px;
-}
-
-.white-text {
-  color: #FFF;
-}
-
-
-
-// footer CSS
-
-.footer {
-  background-color: #2980b9;
-  padding: 2rem 4rem;
-  text-align: center;
-  color: #fff;
-  i {
-    font-size: 100px;
-  }
-}
-
-.footer {
-  h4 {
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    margin-top: 2.5rem;
-    margin-bottom: 10px;
-  }
-  p {
-    font-weight: 300; 
-    font-size: .8rem;
-  }
-}
-
-@media only screen and (min-width: 40.063em) {
-.footer {
-  .columns:nth-child(n+2) {
-     border-left: 1px solid scale-color(#fff, $lightness: -30%);
-     min-height: 280px;
-  }
- }
-}
-
-.footer-links {
-  list-style-type: none;
-  a {
-    color: #fff;
-    font-weight: 300;
-    font-size: .8rem;
-  }
-  li {
-    margin-top: .5rem;
-  }
-}
 

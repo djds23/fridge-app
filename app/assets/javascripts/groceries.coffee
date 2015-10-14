@@ -4,10 +4,20 @@
 swipeElementFactory = (element) ->
   hammer = new Hammer(element)
   hammer.on('swiperight', (event) ->
-    alert('swiped right!')
+    $.post(
+      '/v1/quantity',
+      { 'gid': element.dataset.gid, 'direction': 'up'}
+    ).done((data) ->
+      alert('one up!')
+    ) 
   )
   hammer.on('swipeleft', (event) ->
-    alert('swiped left!')
+    $.post(
+      '/v1/quantity',
+      { 'gid': element.dataset.gid, 'direction': 'down'}
+    ).done((data) ->
+      alert('one down!')
+    )
   ) 
 
 $(document).on('ready', (event) ->

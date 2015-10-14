@@ -66,8 +66,13 @@ class GroceriesController < ApplicationController
 
   def quantity
     @grocery = Grocery.find(grocery_params[:gid])
-    @grocery.quantity += grocery_params[:direction] == 'up' ? 1 : -1 
-    @grocery.save
+
+    if grocery_params[:direction] == 'up'  
+      @grocery.up_quantity
+    else
+      @grocery.down_quantity
+    end
+
     respond_to do |format|
       format.json { render json: @grocery }
     end

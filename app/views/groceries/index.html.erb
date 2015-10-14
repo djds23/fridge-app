@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class='fridge-header'>What's in the fridge?</h1>
+<h1 class='text-center'>What's in the fridge?</h1>
   <ul id="grocery-list" >
     <% @in_stock.each do |grocery| %>
       <li class='grocery in-stock' data-gid='<%= grocery.id %>'>
@@ -15,7 +15,7 @@
     <% @running_low.each do |grocery| %>
       <li class='grocery in-stock' data-gid='<%= grocery.id %>'>
         <div class='row'>
-          <div class='button [radius round] large-centered small-centered columns'>
+          <div class='button round large-centered small-centered columns'>
             <%= link_to grocery.name, grocery_path(grocery) %>
           </div>
         </div>
