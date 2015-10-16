@@ -69,9 +69,9 @@ class GroceriesController < ApplicationController
     @grocery = Grocery.find(grocery_params[:gid])
 
     if grocery_params[:direction] == 'up'  
-      @grocery.up_quantity
+      @grocery.up_quantity!
     else
-      @grocery.down_quantity
+      @grocery.down_quantity!
     end
 
     respond_to do |format|

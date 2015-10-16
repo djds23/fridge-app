@@ -57,11 +57,11 @@ class Grocery < ActiveRecord::Base
   end
 
 
-  def up_quantity
+  def up_quantity!
     return false if in_stock?
 
     new_quantity = 
-      if status_hash[self.quantity] = :OUT_OF_STOCK  
+      if status_hash[self.quantity] == :OUT_OF_STOCK  
         1
       else 
         5 
@@ -70,11 +70,11 @@ class Grocery < ActiveRecord::Base
     self.save
   end
 
-  def down_quantity
+  def down_quantity!
     return false if oos?
 
     new_quantity = 
-      if status_hash[self.quantity] = :IN_STOCK  
+      if status_hash[self.quantity] == :IN_STOCK  
         1
       else 
         0 

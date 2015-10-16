@@ -37,6 +37,10 @@ gem 'foundation-icons-sass-rails'
 gem 'puma'
 
 group :development, :test do
+  # rspec for testing
+  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
+  
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
