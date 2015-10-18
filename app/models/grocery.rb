@@ -20,9 +20,9 @@ class Grocery < ActiveRecord::Base
     in: [0, 1, 5]
   }
 
-  scope :in_stock, -> { where('quantity = 5')}
-  scope :running_low, -> { where('quantity = 1')}
-  scope :out_of_stock, -> { where('quantity = 0')}
+  scope :in_stock, -> { where('quantity = 5') }
+  scope :running_low, -> { where('quantity = 1') }
+  scope :out_of_stock, -> { where('quantity = 0') }
 
   module Quantities
     IN_STOCK     = 'In Stock'
@@ -43,6 +43,11 @@ class Grocery < ActiveRecord::Base
       [Quantities.const_get(status), quantity]
     end
   end
+
+  def status_css_class
+    status_hash[self.quantity].to_s.downcase
+  end
+
 
   def status
     Quantities.const_get(status_hash[self.quantity])
@@ -83,3 +88,4 @@ class Grocery < ActiveRecord::Base
     self.save
   end
 end
+
