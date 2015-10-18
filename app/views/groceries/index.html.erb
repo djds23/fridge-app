@@ -5,7 +5,7 @@
     <% @in_stock.each do |grocery| %>
       <li class='grocery in-stock' data-gid='<%= grocery.id %>'>
         <div class='row'>
-          <div class='button round large-centered small-centered columns'>
+          <div class='large-centered small-centered columns'>
             <%= link_to grocery.name, grocery_path(grocery) %>
           </div>
         </div>
@@ -15,7 +15,7 @@
     <% @running_low.each do |grocery| %>
       <li class='grocery running-low' data-gid='<%= grocery.id %>'>
         <div class='row'>
-          <div class='button round large-centered small-centered columns'>
+          <div class='large-centered small-centered columns'>
             <%= link_to grocery.name, grocery_path(grocery) %>
           </div>
         </div>
@@ -25,7 +25,7 @@
     <% @out_of_stock.each do |grocery| %>
       <li class='grocery out-of-stock' data-gid='<%= grocery.id %>'>
         <div class='row'>
-          <div class='button round large-centered small-centered columns'>
+          <div class='large-centered small-centered columns'>
             <%= link_to grocery.name, grocery_path(grocery) %>
           </div>
         </div>
