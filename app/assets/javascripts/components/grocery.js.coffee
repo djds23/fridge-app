@@ -15,7 +15,6 @@
       if @props.grocery.quantity == data.quantity
         return null
 
-      alert('one ' + direction + '!')
       @props.updateList(
         @getQuantityString(),
         @quantityToStatus(data.quantity),
