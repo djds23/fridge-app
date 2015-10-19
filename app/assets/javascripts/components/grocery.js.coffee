@@ -12,6 +12,7 @@
       '/v1/quantity',
       {'grocery': { 'gid': @props.grocery.id, 'direction': direction}}
     ).done((data) =>
+      return null if @props.grocery.id == data.id
       alert('one ' + direction + '!')
       @props.updateList(
         @getQuantityString(),
