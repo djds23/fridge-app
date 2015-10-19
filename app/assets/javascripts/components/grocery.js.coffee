@@ -11,7 +11,6 @@
     hammer = new Hammer(@getDOMNode())
     hammer.on('swipeleft', @swipeLeftEvent)
     hammer.on('swiperight', @swipeRightEvent)
-    null
 
   updateQuantity: (direction) ->
     $.post(
