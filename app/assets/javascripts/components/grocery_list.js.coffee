@@ -15,8 +15,8 @@
         React.createElement Grocery, key: grocery.id, grocery: grocery, updateList: @prepNewState
 
   prepNewState: (old_status, new_status, old_grocery, new_grocery) ->
-    cleaned_array = _.remove(@state[old_status], (element) =>
-      element.id == old_grocery.id
+    cleaned_array = _.filter(@state[old_status], (element) =>
+      element.id != old_grocery.id
     )
 
     new_array = @state[new_status].slice()
