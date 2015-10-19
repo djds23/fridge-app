@@ -16,6 +16,7 @@
       @props.updateList(
         @getQuantityString(),
         @quantityToStatus(data.quantity),
+        @props.grocery,
         data
       )
     )

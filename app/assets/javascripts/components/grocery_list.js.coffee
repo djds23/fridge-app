@@ -14,7 +14,7 @@
       for grocery in @state.out_of_stock
         React.createElement Grocery, key: grocery.id, grocery: grocery, updateList: @prepNewState
 
-  prepNewState: (old_status, new_status, new_grocery) ->
+  prepNewState: (old_status, new_status, old_grocery, new_grocery) ->
     cleaned_array = _.remove(@state[old_status], (element) =>
       element == @props.grocery
     )
