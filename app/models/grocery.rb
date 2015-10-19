@@ -44,11 +44,6 @@ class Grocery < ActiveRecord::Base
     end
   end
 
-  def status_css_class
-    status_hash[self.quantity].to_s.downcase
-  end
-
-
   def status
     Quantities.const_get(status_hash[self.quantity])
   end
