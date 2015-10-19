@@ -11,27 +11,15 @@
     $.post(
       '/v1/quantity',
       {'grocery': { 'gid': @props.grocery.id, 'direction': direction}}
-    ).done((data) ->
+    ).done((data) =>
       alert('one ' + direction + '!')
-      new_state = @prepNewState(
+      @props.updateList(
         @getQuantityString(),
         @quantityToStatus(data.quantity),
         data
       )
-      @setState(new_state)
     )
-
-  prepNewState: (old_status, new_status, new_grocery) ->
-    cleaned_array = _.remove(old_array, (element) ->
-      element == @props.grocery
-    )
-    new_array.push(new_grocery)
-    new_object = {}
-    new_object[old_status] = cleaned_array
-    new_object[new_status] = new_array
-    new_object
-    
-
+   
   swipeRightEvent: (event) ->
     event.preventDefault()
     @updateQuantity('up')
