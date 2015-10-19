@@ -15,15 +15,17 @@
   updateQuantity: (direction) ->
     $.post(
       '/v1/quantity',
-      {'grocery': { 'gid': @props.quantity.id, 'direction': 'up'}}
+      {'grocery': { 'gid': @props.grocery.id, 'direction': direction}}
     ).done((data) ->
-      alert('one down!')
+      alert('one ' + direction + '!')
     )
 
   swipeRightEvent: (event) ->
+    event.preventDefault()
     updateQuantity('up')
 
   swipeLeftEvent: (event) ->
+    event.preventDefault()
     updateQuantity('down')
 
   render: ->
