@@ -23,11 +23,11 @@
 
   swipeRightEvent: (event) ->
     event.preventDefault()
-    updateQuantity('up')
+    @updateQuantity('up')
 
   swipeLeftEvent: (event) ->
     event.preventDefault()
-    updateQuantity('down')
+    @updateQuantity('down')
 
   render: ->
     React.DOM.div
