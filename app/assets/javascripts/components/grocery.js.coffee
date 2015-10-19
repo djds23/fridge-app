@@ -1,11 +1,6 @@
 @Grocery = React.createClass
-  getCssClass: ->
-    if @props.grocery.quantity == 0
-      'out-of-stock'
-    else if @props.grocery.quantity == 1
-      'running-low'
-    else
-      'in-stock'
+  getQuantityString: ->
+    @quantityToStatus(@props.grocery.quantity)
 
   componentDidMount: ->
     hammer = new Hammer(@getDOMNode())
@@ -18,7 +13,24 @@
       {'grocery': { 'gid': @props.grocery.id, 'direction': direction}}
     ).done((data) ->
       alert('one ' + direction + '!')
+      new_state = @prepNewState(
+        @getQuantityString(),
+        @quantityToStatus(data.quantity),
+        data
+      )
+      @setState(new_state)
     )
+
+  prepNewState: (old_status, new_status, new_grocery) ->
+    cleaned_array = _.remove(old_array, (element) ->
+      element == @props.grocery
+    )
+    new_array.push(new_grocery)
+    new_object = {}
+    new_object[old_status] = cleaned_array
+    new_object[new_status] = new_array
+    new_object
+    
 
   swipeRightEvent: (event) ->
     event.preventDefault()
@@ -28,9 +40,17 @@
     event.preventDefault()
     @updateQuantity('down')
 
+  quantityToStatus: (quantity) ->
+    if quantity == 0
+      'out_of_stock'
+    else if quantity == 1
+      'running_low'
+    else
+      'in_stock'
+
   render: ->
     React.DOM.div
-      className: 'row grocery ' + @getCssClass()
+      className: 'row grocery ' + @getQuantityString()
       React.DOM.li
         className: 'text-center'
         @props.grocery.name

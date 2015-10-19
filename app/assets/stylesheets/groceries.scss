@@ -10,15 +10,15 @@ $in-stock-color: #b2d8b2;
   list-style-type: none;
 }
 
-.in-stock {
+.in_stock {
   background-color: $in-stock-color;
 }
 
-.running-low {
+.running_low {
   background-color: $running-low-color;
 }
 
-.out-of-stock {
+.out_of_stock {
   background-color: $out-of-stock-color;
 }
 
