@@ -16,7 +16,7 @@
 
   prepNewState: (old_status, new_status, old_grocery, new_grocery) ->
     cleaned_array = _.remove(@state[old_status], (element) =>
-      element == @props.grocery
+      element.id == @props.grocery.id
     )
 
     new_array = @state[new_status].slice()
