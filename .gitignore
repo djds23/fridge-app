@@ -18,3 +18,4 @@
 
 # Ignore .swp from vim
 *.swp
+.DS_Store

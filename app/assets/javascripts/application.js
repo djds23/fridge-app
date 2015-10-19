@@ -15,6 +15,10 @@
 //= require fastclick
 //= require foundation
 //= require hammer
+//= require lodash
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
