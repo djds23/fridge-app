@@ -21,10 +21,12 @@
 
     new_array = @state[new_status].slice()
     new_array.push(new_grocery)
+    compare = (a, b) ->
+      b.id - a.id
 
     new_object = {}
-    new_object[old_status] = cleaned_array
-    new_object[new_status] = new_array
+    new_object[old_status] = cleaned_array.sort(compare)
+    new_object[new_status] = new_array.sort(compare)
     new_object
 
     @setState(new_object)

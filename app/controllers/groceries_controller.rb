@@ -4,9 +4,9 @@ class GroceriesController < ApplicationController
   # GET /groceries
   # GET /groceries.json
   def index
-    @in_stock = Grocery.in_stock
-    @running_low = Grocery.running_low
-    @out_of_stock = Grocery.out_of_stock
+    @in_stock = Grocery.in_stock.order(id: :desc)
+    @running_low = Grocery.running_low.order(id: :desc)
+    @out_of_stock = Grocery.out_of_stock.order(id: :desc)
   end
 
   # GET /groceries/1
