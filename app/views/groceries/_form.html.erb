@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="row field">
+  <div class="row field expand">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="row field">
+  <div class="row field expand">
     <%= f.select :quantity, options_for_select(@grocery.options) %> 
   </div>
-  <div class="row field">
+  <div class="row field expand">
     <%= f.select :resident_id, options_for_select(@residents.map{ |r| [r.username, r.id]}) %> 
   </div>
-  <div class="row actions">
+  <div class="row actions expand">
     <%= f.submit class: 'button expand' %>
   </div>
 <% end %>
