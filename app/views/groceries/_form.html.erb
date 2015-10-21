@@ -11,17 +11,25 @@
     </div>
   <% end %>
 
-  <div class="row field expand">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="row field">
+    <div class='large-12 columns'>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
   </div>
   <div class="row field expand">
-    <%= f.select :quantity, options_for_select(@grocery.options) %> 
+    <div class='large-12 columns'>
+      <%= f.select :quantity, options_for_select(@grocery.options) %> 
+    </div>
   </div>
   <div class="row field expand">
-    <%= f.select :resident_id, options_for_select(@residents.map{ |r| [r.username, r.id]}) %> 
+    <div class='large-12 columns'>
+      <%= f.select :resident_id, options_for_select(@residents.map{ |r| [r.username, r.id]}) %> 
+    </div>
   </div>
   <div class="row actions expand">
-    <%= f.submit class: 'button expand' %>
+    <div class='large-12 columns'>
+      <%= f.submit class: 'button expand' %>
+    </div>
   </div>
 <% end %>
