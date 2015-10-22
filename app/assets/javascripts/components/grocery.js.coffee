@@ -1,8 +1,13 @@
 @Grocery = React.createClass
   componentDidMount: ->
     hammer = new Hammer(@getDOMNode())
-    hammer.on('swipeleft', @swipeLeftEvent)
-    hammer.on('swiperight', @swipeRightEvent)
+    hammer.add(new Hammer.Tap(event: 'doubletap', taps: 2))
+
+    hammer.on('swipeleft', @handleSwipeLeftEvent)
+    hammer.on('swiperight', @handleSwipeRightEvent)
+    hammer.on('doubletap', (event) =>
+      alert('doubletapped')
+    )
 
   getQuantityString: ->
     @quantityToStatus(@props.grocery.quantity)
@@ -15,11 +20,11 @@
     else
       'in_stock'
 
-  swipeRightEvent: (event) ->
+  handleSwipeRightEvent: (event) ->
     event.preventDefault()
     @updateQuantity('up')
 
-  swipeLeftEvent: (event) ->
+  handleSwipeLeftEvent: (event) ->
     event.preventDefault()
     @updateQuantity('down')
 
