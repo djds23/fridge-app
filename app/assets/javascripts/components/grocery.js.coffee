@@ -1,11 +1,27 @@
 @Grocery = React.createClass
-  getQuantityString: ->
-    @quantityToStatus(@props.grocery.quantity)
-
   componentDidMount: ->
     hammer = new Hammer(@getDOMNode())
     hammer.on('swipeleft', @swipeLeftEvent)
     hammer.on('swiperight', @swipeRightEvent)
+
+  getQuantityString: ->
+    @quantityToStatus(@props.grocery.quantity)
+
+  quantityToStatus: (quantity) ->
+    if quantity == 0
+      'out_of_stock'
+    else if quantity == 1
+      'running_low'
+    else
+      'in_stock'
+
+  swipeRightEvent: (event) ->
+    event.preventDefault()
+    @updateQuantity('up')
+
+  swipeLeftEvent: (event) ->
+    event.preventDefault()
+    @updateQuantity('down')
 
   updateQuantity: (direction) ->
     $.post(
@@ -22,22 +38,6 @@
         data
       )
     )
-   
-  swipeRightEvent: (event) ->
-    event.preventDefault()
-    @updateQuantity('up')
-
-  swipeLeftEvent: (event) ->
-    event.preventDefault()
-    @updateQuantity('down')
-
-  quantityToStatus: (quantity) ->
-    if quantity == 0
-      'out_of_stock'
-    else if quantity == 1
-      'running_low'
-    else
-      'in_stock'
 
   render: ->
     React.DOM.div
