@@ -24,13 +24,15 @@
     @updateQuantity('down')
 
   updateQuantity: (direction) ->
+    cant_go_up = @props.grocery.quantity == 5 and direction == 'up'
+    cant_go_down = @props.grocery.quantity == 0 and direction == 'down'
+    if cant_go_up or cant_go_down
+      return
+
     $.post(
       '/v1/quantity',
       {'grocery': { 'gid': @props.grocery.id, 'direction': direction}}
     ).done((data) =>
-      if @props.grocery.quantity == data.quantity
-        return null
-
       @props.updateList(
         @getQuantityString(),
         @quantityToStatus(data.quantity),

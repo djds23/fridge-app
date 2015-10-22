@@ -1,3 +1,5 @@
+Grocery = React.createFactory(@Grocery)
+
 @GroceryList = React.createClass
   getInitialState: ->
     in_stock: @props.in_stock
@@ -25,12 +27,9 @@
     React.DOM.ol
       className: 'grocery-list'
       for grocery in @state.in_stock
-        React.addons.CSSTransitionGroup transitionName: 'slider', transitionEnterTimeout: 500, transitionLeaveTimeout: 300
-        React.createElement Grocery, key: grocery.id, grocery: grocery, updateList: @prepNewState
+        Grocery key: grocery.id, grocery: grocery, updateList: @prepNewState
       for grocery in @state.running_low
-        React.addons.CSSTransitionGroup transitionName: 'slider', transitionEnterTimeout: 500, transitionLeaveTimeout: 300
-        React.createElement Grocery, key: grocery.id, grocery: grocery, updateList: @prepNewState
+        Grocery key: grocery.id, grocery: grocery, updateList: @prepNewState
       for grocery in @state.out_of_stock
-        React.addons.CSSTransitionGroup transitionName: 'slider', transitionEnterTimeout: 500, transitionLeaveTimeout: 300
-        React.createElement Grocery, key: grocery.id, grocery: grocery, updateList: @prepNewState
+        Grocery key: grocery.id, grocery: grocery, updateList: @prepNewState
 
