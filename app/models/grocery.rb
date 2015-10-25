@@ -28,25 +28,25 @@ class Grocery < ActiveRecord::Base
     IN_STOCK     = 'In Stock'
     RUNNING_LOW  = 'Running Low'
     OUT_OF_STOCK = 'Out of Stock'
-  end
 
-  def self.status_hash
-    {
-      5 => :IN_STOCK,
-      1 => :RUNNING_LOW,
-      0 => :OUT_OF_STOCK,
-    }
-  end
-
-  status_hash.each do |value, status|
-    method_name = status.to_s.downcase << '?'
-    define_method(method_name) do
-      quantity == value 
+    def self.status_hash
+      {
+        5 => :IN_STOCK,
+        1 => :RUNNING_LOW,
+        0 => :OUT_OF_STOCK,
+      }
     end
   end
-  
+
+  Quantities.status_hash.each do |value, status|
+    method_name = status.to_s.downcase << '?'
+    define_method(method_name) do
+      quantity == value
+    end
+  end
+
   def options
-    status_hash.map do |quantity, status|
+    Quantities.status_hash.map do |quantity, status|
       [Quantities.const_get(status), quantity]
     end
   end
@@ -54,28 +54,28 @@ class Grocery < ActiveRecord::Base
   def status
     Quantities.const_get(status_hash[self.quantity])
   end
-  
+
   def up_quantity!
     return false if in_stock?
 
-    new_quantity = 
-      if status_hash[self.quantity] == :OUT_OF_STOCK  
+    new_quantity =
+      if Quantities.status_hash[self.quantity] == :OUT_OF_STOCK
         1
-      else 
-        5 
+      else
+        5
       end
     self.quantity = new_quantity
     self.save
   end
 
   def down_quantity!
-    return false if oos?
+    return false if out_of_stock?
 
-    new_quantity = 
-      if status_hash[self.quantity] == :IN_STOCK  
+    new_quantity =
+      if Quantities.status_hash[self.quantity] == :IN_STOCK
         1
-      else 
-        0 
+      else
+        0
       end
     self.quantity = new_quantity
     self.save
