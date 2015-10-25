@@ -38,6 +38,13 @@ class Grocery < ActiveRecord::Base
     }
   end
 
+  status_hash.each do |value, status|
+    method_name = status.to_s.downcase << '?'
+    define_method(method_name) do
+      quantity == value 
+    end
+  end
+  
   def options
     status_hash.map do |quantity, status|
       [Quantities.const_get(status), quantity]
@@ -47,16 +54,7 @@ class Grocery < ActiveRecord::Base
   def status
     Quantities.const_get(status_hash[self.quantity])
   end
-
-  def oos?
-    self.quantity.zero?
-  end
-
-  def in_stock?
-    self.quantity == 5
-  end
-
-
+  
   def up_quantity!
     return false if in_stock?
 
