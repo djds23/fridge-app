@@ -30,7 +30,7 @@ class Grocery < ActiveRecord::Base
     OUT_OF_STOCK = 'Out of Stock'
   end
 
-  def status_hash
+  def self.status_hash
     {
       5 => :IN_STOCK,
       1 => :RUNNING_LOW,
