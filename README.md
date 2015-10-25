@@ -1,6 +1,7 @@
 *mangia mangia mangia mangia mangia!*
 
-TODO: 
+TODO:
+  * add categories with their own sections and subsections
   * easier to use /new/ form
   * way to hide/delete old groceries
   * a detailed view you should hold or double tap to navigate to
