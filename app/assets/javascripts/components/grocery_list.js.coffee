@@ -1,4 +1,4 @@
-GroceryListItem = React.createFactory(@GroceryListItem)
+Grocery = React.createFactory(@Grocery)
 
 @GroceryList = React.createClass
   getInitialState: ->
@@ -27,9 +27,9 @@ GroceryListItem = React.createFactory(@GroceryListItem)
     React.DOM.ol
       className: 'grocery-list'
       for grocery in @state.in_stock
-        GroceryListItem key: grocery.id, grocery: grocery, updateList: @prepNewState
+        Grocery key: grocery.id, grocery: grocery, updateList: @prepNewState
       for grocery in @state.running_low
-        GroceryListItem key: grocery.id, grocery: grocery, updateList: @prepNewState
+        Grocery key: grocery.id, grocery: grocery, updateList: @prepNewState
       for grocery in @state.out_of_stock
-        GroceryListItem key: grocery.id, grocery: grocery, updateList: @prepNewState
+        Grocery key: grocery.id, grocery: grocery, updateList: @prepNewState
 

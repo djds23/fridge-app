@@ -1,4 +1,4 @@
-@GroceryListItem = React.createClass
+@Grocery = React.createClass
   componentDidMount: ->
     hammer = new Hammer(@getDOMNode())
     hammer.on('swipeleft', @handleSwipeLeftEvent)
