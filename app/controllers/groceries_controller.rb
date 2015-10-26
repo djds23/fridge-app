@@ -1,5 +1,7 @@
 class GroceriesController < ApplicationController
-  before_action :set_grocery, only: [:show, :edit, :update, :destroy]
+  before_action :set_grocery, only: [
+    :quantity, :show, :edit, :update, :destroy
+  ]
 
   # GET /groceries
   # GET /groceries.json
@@ -89,7 +91,8 @@ class GroceriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_grocery
-      @grocery = Grocery.find(params[:id])
+      grocery_id = params[:id] || params[:grocery][:id]
+      @grocery = Grocery.find(grocery_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -103,3 +106,4 @@ class GroceriesController < ApplicationController
       )
     end
 end
+
