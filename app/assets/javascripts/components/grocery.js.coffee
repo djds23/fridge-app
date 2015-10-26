@@ -1,13 +1,8 @@
-@Grocery = React.createClass
+@GroceryListItem = React.createClass
   componentDidMount: ->
     hammer = new Hammer(@getDOMNode())
-    hammer.add(new Hammer.Tap(event: 'doubletap', taps: 2))
-
     hammer.on('swipeleft', @handleSwipeLeftEvent)
     hammer.on('swiperight', @handleSwipeRightEvent)
-    hammer.on('doubletap', (event) =>
-      alert('doubletapped')
-    )
 
   getQuantityString: ->
     @quantityToStatus(@props.grocery.quantity)
@@ -36,7 +31,7 @@
 
     $.post(
       '/v1/quantity',
-      {'grocery': { 'gid': @props.grocery.id, 'direction': direction}}
+      {'grocery': { 'id': @props.grocery.id, 'direction': direction}}
     ).done((data) =>
       @props.updateList(
         @getQuantityString(),

@@ -1,4 +1,4 @@
-Grocery = React.createFactory(@Grocery)
+GroceryListItem = React.createFactory(@GroceryListItem)
 
 @GroceryList = React.createClass
   getInitialState: ->
@@ -22,14 +22,14 @@ Grocery = React.createFactory(@Grocery)
     new_object[new_status] = new_array.sort(compare)
 
     @setState(new_object)
- 
+
   render: ->
     React.DOM.ol
       className: 'grocery-list'
       for grocery in @state.in_stock
-        Grocery key: grocery.id, grocery: grocery, updateList: @prepNewState
+        GroceryListItem key: grocery.id, grocery: grocery, updateList: @prepNewState
       for grocery in @state.running_low
-        Grocery key: grocery.id, grocery: grocery, updateList: @prepNewState
+        GroceryListItem key: grocery.id, grocery: grocery, updateList: @prepNewState
       for grocery in @state.out_of_stock
-        Grocery key: grocery.id, grocery: grocery, updateList: @prepNewState
+        GroceryListItem key: grocery.id, grocery: grocery, updateList: @prepNewState
 

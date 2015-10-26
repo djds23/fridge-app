@@ -66,11 +66,10 @@ class GroceriesController < ApplicationController
   end
 
   def quantity
-    @grocery = Grocery.find(grocery_params[:gid])
-
-    if grocery_params[:direction] == 'up'  
+    case grocery_params[:direction]
+    when 'up'
       @grocery.up_quantity!
-    else
+    when 'down'
       @grocery.down_quantity!
     end
 
@@ -79,6 +78,13 @@ class GroceriesController < ApplicationController
     end
   end
 
+  def update_purchased_at
+    @grocery.update(:purchased_at, grocery_params[:purchased_at] || Time.now)
+
+    respond_to do |format|
+      format.json { render json: @grocery }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -89,11 +95,11 @@ class GroceriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def grocery_params
       params.require(:grocery).permit(
-        :name, 
-        :quantity, 
-        :resident_id, 
-        :gid, 
+        :name,
+        :quantity,
+        :resident_id,
         :direction,
+        :purchased_at,
       )
     end
 end
