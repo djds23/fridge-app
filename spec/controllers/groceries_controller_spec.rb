@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe GroceriesController, type: :controller do
+
   describe 'POST up_quantity!' do
     let(:grocery) { FactoryGirl.create(:grocery, quantity: 0) }
     it 'properly increments the quantity' do

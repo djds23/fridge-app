@@ -89,21 +89,19 @@ class GroceriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_grocery
-      grocery_id = params[:id] || params[:grocery][:id]
-      @grocery = Grocery.find(grocery_id)
-    end
+  def set_grocery
+    grocery_id = params[:id] || params[:grocery][:id]
+    @grocery = Grocery.find(grocery_id)
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def grocery_params
-      params.require(:grocery).permit(
-        :name,
-        :quantity,
-        :resident_id,
-        :direction,
-        :purchased_at,
-      )
-    end
+  def grocery_params
+    params.require(:grocery).permit(
+      :name,
+      :quantity,
+      :resident_id,
+      :direction,
+      :purchased_at,
+    )
+  end
 end
 
