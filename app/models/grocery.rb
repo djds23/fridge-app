@@ -52,32 +52,22 @@ class Grocery < ActiveRecord::Base
   end
 
   def status
-    Quantities.const_get(status_hash[self.quantity])
+    Quantities.const_get(
+      Quantities.status_hash[quantity]
+    )
   end
 
   def up_quantity!
     return false if in_stock?
 
-    new_quantity =
-      if Quantities.status_hash[self.quantity] == :OUT_OF_STOCK
-        1
-      else
-        5
-      end
-    self.quantity = new_quantity
+    self.quantity = out_of_stock? ? 1 : 5
     self.save
   end
 
   def down_quantity!
     return false if out_of_stock?
 
-    new_quantity =
-      if Quantities.status_hash[self.quantity] == :IN_STOCK
-        1
-      else
-        0
-      end
-    self.quantity = new_quantity
+    self.quantity = in_stock? ? 1 : 0
     self.save
   end
 end

@@ -5,10 +5,19 @@
 <p class="grocery">
   <%= @grocery.name %>
 </p>
+<% unless @grocery.out_of_stock? %>
 
-<p class="grocery">
-  <%= @grocery.status %>
-</p>
+  <p class="grocery">
+    <%= @grocery.status %>
+  </p>
+
+  <% if @grocery.purchased_at.present? %>
+    <p><%= @grocery.name %> was purchased on <%= @grocery.purchased_at.to_date %></p>
+  <% end %>
+
+<% end %> 
+
+
 
 <%= link_to 'Edit', edit_grocery_path(@grocery) %> |
 <%= link_to 'Back', groceries_path %>
