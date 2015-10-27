@@ -2,7 +2,7 @@
   <div class="large-12 columns">
 <p id="notice"><%= notice %></p>
 
-<%= react_component 'SingleGrocery', grocery: @grocery %>
+<%= react_component 'SingleGrocery', grocery: @grocery.serializable_hash(methods: 'status') %>
 
 <%= link_to 'Edit', edit_grocery_path(@grocery) %> |
 <%= link_to 'Back', groceries_path %>

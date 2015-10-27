@@ -84,7 +84,7 @@ class GroceriesController < ApplicationController
     @grocery.update(:purchased_at, grocery_params[:purchased_at] || Time.now)
 
     respond_to do |format|
-      format.json { render json: @grocery }
+      format.json { render json: @grocery.serializable_hash(methods: 'status') }
     end
   end
 
