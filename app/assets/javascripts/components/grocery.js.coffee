@@ -3,9 +3,19 @@
     hammer = new Hammer(@getDOMNode())
     hammer.on('swipeleft', @handleSwipeLeftEvent)
     hammer.on('swiperight', @handleSwipeRightEvent)
+    hammer.add(
+      new Hammer.Tap(
+        { event: 'doubletap', taps: 2 }
+      )
+    )
+
+    hammer.on('doubletap', onDoubleTap)
 
   getQuantityString: ->
     @quantityToStatus(@props.grocery.quantity)
+
+  onDoubleTap: (event) ->
+    alert('We have been double tapped')
 
   quantityToStatus: (quantity) ->
     if quantity == 0
