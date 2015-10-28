@@ -9,7 +9,7 @@
       )
     )
 
-    hammer.on('doubletap', onDoubleTap)
+    hammer.on('doubletap', @onDoubleTap)
 
   getQuantityString: ->
     @quantityToStatus(@props.grocery.quantity)
