@@ -13,12 +13,13 @@
   # This method is not the best way to do this.
   # The problem here is we do not get rails notices.
   deleteGrocery: ->
-    $.ajax(
-      url: '/groceries/' + @state.grocery.id,
-      method: 'DELETE'
-      data: @state.grocery
-    )
-    window.location.href = '/'
+    if confirm('Delete ' + @state.grocery.name)
+      $.ajax(
+        url: '/groceries/' + @state.grocery.id,
+        method: 'DELETE'
+        data: @state.grocery
+      )
+      window.location.href = '/'
 
   purchasedAt: ->
     if @state.grocery.purchased_date
