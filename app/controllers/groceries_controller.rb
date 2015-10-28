@@ -1,6 +1,6 @@
 class GroceriesController < ApplicationController
   before_action :set_grocery, only: [
-    :quantity, :show, :edit, :update, :destroy
+    :update_purchased_at, :quantity, :show, :edit, :update, :destroy
   ]
 
   # GET /groceries
@@ -81,10 +81,11 @@ class GroceriesController < ApplicationController
   end
 
   def update_purchased_at
-    @grocery.update(:purchased_at, grocery_params[:purchased_at] || Time.now)
+    purchased_at = grocery_params[:purchased_at] || Time.now
+    @grocery.update(purchased_at: purchased_at)
 
     respond_to do |format|
-      format.json { render json: @grocery.serializable_hash(methods: 'status') }
+      format.json { render json: @grocery }
     end
   end
 
@@ -96,11 +97,16 @@ class GroceriesController < ApplicationController
 
   def grocery_params
     params.require(:grocery).permit(
+      :id,
       :name,
+      :status,
       :quantity,
-      :resident_id,
       :direction,
+      :updated_at,
+      :created_at,
+      :resident_id,
       :purchased_at,
+      :purchased_date,
     )
   end
 end

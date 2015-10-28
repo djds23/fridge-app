@@ -31,7 +31,7 @@
 
     $.post(
       '/v1/quantity',
-      {'grocery': { 'id': @props.grocery.id, 'direction': direction}}
+      { grocery: { id: @props.grocery.id, direction: direction}}
     ).done((data) =>
       @props.updateList(
         @getQuantityString(),

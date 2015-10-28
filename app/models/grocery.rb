@@ -20,8 +20,8 @@ class Grocery < ActiveRecord::Base
     in: [0, 1, 5]
   }
 
-  scope :in_stock, -> { where('quantity = 5') }
-  scope :running_low, -> { where('quantity = 1') }
+  scope :in_stock,     -> { where('quantity = 5') }
+  scope :running_low,  -> { where('quantity = 1') }
   scope :out_of_stock, -> { where('quantity = 0') }
 
   module Quantities
@@ -69,6 +69,16 @@ class Grocery < ActiveRecord::Base
 
     self.quantity = in_stock? ? 1 : 0
     self.save
+  end
+
+  # overwrite as_json to include methods & extra goodies
+  def as_json(options = {})
+    json_hash = {
+      status: status,
+      purchased_date: purchased_at.try(:strftime, "%B %d, %Y"),
+    }
+
+    json_hash.merge(super)
   end
 end
 
