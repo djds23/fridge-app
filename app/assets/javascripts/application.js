@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require fastclick
 //= require foundation
 //= require hammer
 //= require lodash
@@ -22,9 +21,4 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
-if ('addEventListener' in document) {
-  document.addEventListener('DOMContentLoaded', function() {
-    FastClick.attach(document.body);
-  }, false);
-}
 
