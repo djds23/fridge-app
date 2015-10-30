@@ -90,6 +90,7 @@ class GroceriesController < ApplicationController
   end
 
   private
+
   def set_grocery
     grocery_id = params[:id] || params[:grocery][:id]
     @grocery = Grocery.find(grocery_id)
