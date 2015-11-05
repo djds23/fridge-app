@@ -15,9 +15,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
-gem 'react-rails', '~> 1.0' 
+gem 'react-rails', '~> 1.0'
 gem 'capistrano-rails', group: :development
-gem 'puma'
+gem 'passenger'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
