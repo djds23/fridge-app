@@ -7,7 +7,7 @@ TODO:
   * a detailed view you should hold or double tap to navigate to
   * unit tests
   * deployment with capistrano
-  * properly config nginx
+  * ~~properly config nginx~~
 
 DONE:
   * write front end in react
