@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
-
-<h1 class='text-center'>What's in the fridge?</h1>
-  <%= react_component 'GroceryList', { 
+  <%= react_component 'GroceryList', {
     in_stock: @in_stock,
     running_low: @running_low,
     out_of_stock: @out_of_stock,

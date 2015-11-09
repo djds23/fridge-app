@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007151518) do
+ActiveRecord::Schema.define(version: 20151109035940) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.integer  "house_hold_id"
+    t.string   "name"
+    t.integer  "active"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "categories", ["house_hold_id"], name: "index_categories_on_house_hold_id", using: :btree
 
   create_table "groceries", force: :cascade do |t|
     t.string   "name"
@@ -20,9 +33,11 @@ ActiveRecord::Schema.define(version: 20151007151518) do
     t.datetime "updated_at",               null: false
     t.integer  "resident_id"
     t.datetime "purchased_at"
+    t.integer  "category_id"
   end
 
-  add_index "groceries", ["resident_id"], name: "index_groceries_on_resident_id"
+  add_index "groceries", ["category_id"], name: "index_groceries_on_category_id", using: :btree
+  add_index "groceries", ["resident_id"], name: "index_groceries_on_resident_id", using: :btree
 
   create_table "house_holds", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -36,6 +51,8 @@ ActiveRecord::Schema.define(version: 20151007151518) do
     t.integer  "household_id"
   end
 
-  add_index "residents", ["household_id"], name: "index_residents_on_household_id"
+  add_index "residents", ["household_id"], name: "index_residents_on_household_id", using: :btree
 
+  add_foreign_key "categories", "house_holds"
+  add_foreign_key "groceries", "categories"
 end

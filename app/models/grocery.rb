@@ -8,11 +8,13 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  resident_id  :integer
-#  purchased_at :time
+#  purchased_at :datetime
+#  category_id  :integer
 #
 
 class Grocery < ActiveRecord::Base
   belongs_to :resident
+  belongs_to :category
 
   validates :name, presence: true
   validates :resident_id, presence: true

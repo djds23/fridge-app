@@ -1,7 +1,6 @@
 *mangia mangia mangia mangia mangia!*
 
 TODO:
-  * use sprockets for js / scss
   * add categories with their own sections and subsections
   * easier to use /new/ form
   * way to hide/delete old groceries
@@ -10,7 +9,15 @@ TODO:
   * deployment with capistrano
 
 DONE:
+  * use sprockets for js / scss
   * write front end in react
   * have swipe events change state in backend
   * have swipe reorganize existing groceries
   * properly config nginx
+
+Don't forget to run:
+
+`rake assets:precompile`
+
+after deployment
+
