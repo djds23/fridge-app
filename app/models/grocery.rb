@@ -22,9 +22,9 @@ class Grocery < ActiveRecord::Base
     in: [0, 1, 5]
   }
 
-  scope :in_stock,     -> { where('quantity = 5') }
-  scope :running_low,  -> { where('quantity = 1') }
-  scope :out_of_stock, -> { where('quantity = 0') }
+  scope :in_stock,     -> { where('quantity = 5').order(id: :desc) }
+  scope :running_low,  -> { where('quantity = 1').order(id: :desc) }
+  scope :out_of_stock, -> { where('quantity = 0').order(id: :desc) }
 
   module Quantities
     IN_STOCK     = 'In Stock'

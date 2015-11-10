@@ -1,4 +1,5 @@
 class GroceriesController < ApplicationController
+  before_action :set_household
   before_action :set_grocery, only: [
     :update_purchased_at, :quantity, :show, :edit, :update, :destroy
   ]
@@ -6,9 +7,13 @@ class GroceriesController < ApplicationController
   # GET /groceries
   # GET /groceries.json
   def index
-    @in_stock = Grocery.in_stock.order(id: :desc)
-    @running_low = Grocery.running_low.order(id: :desc)
-    @out_of_stock = Grocery.out_of_stock.order(id: :desc)
+    @grocery_by_category_hash = {}
+    Category.where(house_hold_id: @household.id).each do |category|
+      @grocery_by_category_hash[category.name] = {}
+      @grocery_by_category_hash[:in_stock] = category.groceries.in_stock
+      @grocery_by_category_hash[:running_low] = category.groceries.running_low
+      @grocery_by_category_hash[:out_of_stock] = category.groceries.out_of_stock
+    end
   end
 
   # GET /groceries/1
@@ -90,6 +95,10 @@ class GroceriesController < ApplicationController
   end
 
   private
+
+  def set_household
+    @household = HouseHold.first
+  end
 
   def set_grocery
     grocery_id = params[:id] || params[:grocery][:id]

@@ -1,8 +1,10 @@
 *mangia mangia mangia mangia mangia!*
 
 TODO:
+  * update `GroceryList` component to take a name param and match new schema
+  * make consistent naming between `household_id` and `house_hold_id`
   * add categories with their own sections and subsections
-  * easier to use /new/ form
+  * easier to use /new/ form (add category to form)
   * way to hide/delete old groceries
   * a detailed view you should hold or double tap to navigate to
   * unit tests
