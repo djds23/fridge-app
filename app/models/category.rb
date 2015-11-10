@@ -11,7 +11,7 @@
 #
 
 class Category < ActiveRecord::Base
-  has_many :grocery
+  has_many :groceries
   belongs_to :house_hold
 end
 

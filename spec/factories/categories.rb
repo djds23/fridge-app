@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :category do
-    household nil
-name "MyString"
-active ""
+    house_hold HouseHold.first_or_create
+    active true
+    name "Groceries"
   end
 
 end

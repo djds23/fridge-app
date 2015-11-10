@@ -1,6 +1,7 @@
 *mangia mangia mangia mangia mangia!*
 
 TODO:
+  * 0,1,5 do not make sense for quantity codes, use something like 100,200,300
   * update `GroceryList` component to take a name param and match new schema
   * make consistent naming between `household_id` and `house_hold_id`
   * add categories with their own sections and subsections
