@@ -8,7 +8,6 @@ class GroceriesController < ApplicationController
   # GET /groceries.json
   def index
     @grocery_by_category_hash = {}
-    byebug
     Category.where(house_hold_id: @household.id).each do |category|
       @grocery_by_category_hash[category.name] = {}
       @grocery_by_category_hash[category.name][:in_stock] = category.groceries.in_stock

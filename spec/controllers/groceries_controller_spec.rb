@@ -4,14 +4,14 @@ RSpec.describe GroceriesController, type: :controller do
 
   describe 'GET index' do
     let!(:category) { FactoryGirl.create(:category) }
-    let!(:garlic)   { FactoryGirl.create(:grocery, :in_stock, category_id: category.id) }
-    let!(:pizza)    { FactoryGirl.create(:grocery, :running_low, category_id: category.id) }
-    let!(:onions)   { FactoryGirl.create(:grocery, :out_of_stock, category_id: category.id) }
+    let!(:garlic)   { FactoryGirl.create(:grocery, :in_stock, item_name: 'Garlic', category_id: category.id) }
+    let!(:pizza)    { FactoryGirl.create(:grocery, :running_low, item_name: 'Pizza', category_id: category.id) }
+    let!(:onions)   { FactoryGirl.create(:grocery, :out_of_stock, item_name: 'Onions',category_id: category.id) }
     let(:expected_hash) do
       { "Groceries" => {
           in_stock: Grocery.where(id: garlic.id),
           running_low: Grocery.where(id: pizza.id),
-          onions: Grocery.where(id: onions.id),
+          out_of_stock: Grocery.where(id: onions.id),
         }
       }
     end
