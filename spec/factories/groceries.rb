@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :grocery do
-    name 'pizza'
+    item_name 'pizza'
     category
     resident
 

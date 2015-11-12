@@ -42,7 +42,7 @@ def create_grocery(name, category)
   Grocery.create do |grocery|
     grocery.category_id = category.id
     grocery.resident_id = Resident.offset(offset).first.id
-    grocery.name = name
+    grocery.item_name = name
   end
 end
 
