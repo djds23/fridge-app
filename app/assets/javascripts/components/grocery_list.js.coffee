@@ -2,6 +2,7 @@ Grocery = React.createFactory(@Grocery)
 
 @GroceryList = React.createClass
   getInitialState: ->
+    list_name: @props.list_name
     in_stock: @props.in_stock
     running_low: @props.running_low
     out_of_stock: @props.out_of_stock
@@ -24,7 +25,7 @@ Grocery = React.createFactory(@Grocery)
     @setState(new_object)
 
   render: ->
-    React.DOM.h1 className: 'text-center', "Groceries", # This should be dynamic
+    React.DOM.h1 className: 'text-center', @state.list_name,
     React.DOM.ol
       className: 'grocery-list'
       for grocery in @state.in_stock

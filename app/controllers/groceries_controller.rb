@@ -6,13 +6,9 @@ class GroceriesController < ApplicationController
 
   # GET /groceries
   # GET /groceries.json
+  # Why does the grocery controller return a Category?
   def index
-    @grocery_by_category_hash = {}
-    Category.where(house_hold_id: @household.id).each do |category|
-      @grocery_by_category_hash[category.name] = {}
-      @grocery_by_category_hash[category.name][:in_stock] = category.groceries.in_stock
-      @grocery_by_category_hash[category.name][:running_low] = category.groceries.running_low
-      @grocery_by_category_hash[category.name][:out_of_stock] = category.groceries.out_of_stock
+    @categories = Category.where(house_hold_id: @household.id)
     end
   end
 
