@@ -1,6 +1,7 @@
 *mangia mangia mangia mangia mangia!*
 
 TODO:
+  * s/name/item_name on grocery table broke many things, must be fixed
   * 0,1,5 do not make sense for quantity codes, use something like 100,200,300
   * update `GroceryList` component to take a name param and match new schema
   * make consistent naming between `household_id` and `house_hold_id`

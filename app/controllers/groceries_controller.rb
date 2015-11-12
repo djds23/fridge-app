@@ -8,11 +8,12 @@ class GroceriesController < ApplicationController
   # GET /groceries.json
   def index
     @grocery_by_category_hash = {}
+    byebug
     Category.where(house_hold_id: @household.id).each do |category|
       @grocery_by_category_hash[category.name] = {}
-      @grocery_by_category_hash[:in_stock] = category.groceries.in_stock
-      @grocery_by_category_hash[:running_low] = category.groceries.running_low
-      @grocery_by_category_hash[:out_of_stock] = category.groceries.out_of_stock
+      @grocery_by_category_hash[category.name][:in_stock] = category.groceries.in_stock
+      @grocery_by_category_hash[category.name][:running_low] = category.groceries.running_low
+      @grocery_by_category_hash[category.name][:out_of_stock] = category.groceries.out_of_stock
     end
   end
 
@@ -108,7 +109,7 @@ class GroceriesController < ApplicationController
   def grocery_params
     params.require(:grocery).permit(
       :id,
-      :name,
+      :item_name,
       :status,
       :quantity,
       :direction,

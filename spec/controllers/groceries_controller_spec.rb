@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe GroceriesController, type: :controller do
 
   describe 'GET index' do
-    let!(:garlic) { FactoryGirl.create(:grocery, :in_stock) }
-    let!(:pizza) { FactoryGirl.create(:grocery, :running_low) }
-    let!(:onions) { FactoryGirl.create(:grocery, :out_of_stock) }
+    let!(:category) { FactoryGirl.create(:category) }
+    let!(:garlic)   { FactoryGirl.create(:grocery, :in_stock, category_id: category.id) }
+    let!(:pizza)    { FactoryGirl.create(:grocery, :running_low, category_id: category.id) }
+    let!(:onions)   { FactoryGirl.create(:grocery, :out_of_stock, category_id: category.id) }
     let(:expected_hash) do
       { "Groceries" => {
           in_stock: Grocery.where(id: garlic.id),
@@ -15,10 +16,10 @@ RSpec.describe GroceriesController, type: :controller do
       }
     end
 
-    xit 'Creates a properly formatted hash' do
+    it 'Creates a properly formatted hash' do
       get :index
       assigns(:grocery_by_category_hash).should be_a(Hash)
-      assigns(:grocery_by_category_hash).should include(expected_hash)
+      assigns(:grocery_by_category_hash).should == expected_hash
     end
   end
 

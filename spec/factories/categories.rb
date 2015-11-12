@@ -4,5 +4,5 @@ FactoryGirl.define do
     active true
     name "Groceries"
   end
-
 end
+

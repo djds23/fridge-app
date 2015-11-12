@@ -56,5 +56,5 @@
       className: 'row grocery ' + @getQuantityString()
       React.DOM.li
         className: 'text-center'
-        @props.grocery.name
+        @props.grocery.item_name
 

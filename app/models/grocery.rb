@@ -16,7 +16,7 @@ class Grocery < ActiveRecord::Base
   belongs_to :resident
   belongs_to :category
 
-  validates :name, presence: true
+  validates :item_name, presence: true
   validates :resident_id, presence: true
   validates :quantity, inclusion: {
     in: [0, 1, 5]
