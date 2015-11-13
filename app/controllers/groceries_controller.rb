@@ -8,8 +8,7 @@ class GroceriesController < ApplicationController
   # GET /groceries.json
   # Why does the grocery controller return a Category?
   def index
-    @categories = Category.where(house_hold_id: @household.id)
-    end
+    @categories = Category.where(house_hold_id: @household.id).includes(:groceries)
   end
 
   # GET /groceries/1
