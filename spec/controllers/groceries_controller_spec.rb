@@ -7,19 +7,11 @@ RSpec.describe GroceriesController, type: :controller do
     let!(:garlic)   { FactoryGirl.create(:grocery, :in_stock, item_name: 'Garlic', category_id: category.id) }
     let!(:pizza)    { FactoryGirl.create(:grocery, :running_low, item_name: 'Pizza', category_id: category.id) }
     let!(:onions)   { FactoryGirl.create(:grocery, :out_of_stock, item_name: 'Onions',category_id: category.id) }
-    let(:expected_hash) do
-      { "Groceries" => {
-          in_stock: Grocery.where(id: garlic.id),
-          running_low: Grocery.where(id: pizza.id),
-          out_of_stock: Grocery.where(id: onions.id),
-        }
-      }
-    end
 
     it 'Creates a properly formatted hash' do
       get :index
-      assigns(:grocery_by_category_hash).should be_a(Hash)
-      assigns(:grocery_by_category_hash).should == expected_hash
+      categories = controller.instance_variable_get(:@categories)
+      categories.count.should == Category.where(id: category.id).count
     end
   end
 
