@@ -19,12 +19,26 @@ class Grocery < ActiveRecord::Base
   validates :item_name, presence: true
   validates :resident_id, presence: true
   validates :quantity, inclusion: {
-    in: [0, 1, 5]
+    in: [000, 100, 200]
   }
 
-  scope :in_stock,     -> { where('quantity = 5').order(id: :desc) }
-  scope :running_low,  -> { where('quantity = 1').order(id: :desc) }
-  scope :out_of_stock, -> { where('quantity = 0').order(id: :desc) }
+  scope :in_stock, -> do
+    where(
+      'quantity = ?', 200
+    ).order(id: :desc)
+  end
+
+  scope :running_low, -> do
+    where(
+      'quantity = ?', 100
+    ).order(id: :desc)
+  end
+
+  scope :out_of_stock, -> do
+    where(
+     'quantity = ?', 000
+    ).order(id: :desc)
+  end
 
   module Quantities
     IN_STOCK     = 'In Stock'
@@ -33,9 +47,9 @@ class Grocery < ActiveRecord::Base
 
     def self.status_hash
       {
-        5 => :IN_STOCK,
-        1 => :RUNNING_LOW,
-        0 => :OUT_OF_STOCK,
+        200 => :IN_STOCK,
+        100 => :RUNNING_LOW,
+        000 => :OUT_OF_STOCK,
       }
     end
   end
@@ -62,14 +76,14 @@ class Grocery < ActiveRecord::Base
   def up_quantity!
     return false if in_stock?
 
-    self.quantity = out_of_stock? ? 1 : 5
+    self.quantity = out_of_stock? ? 100 : 200
     self.save
   end
 
   def down_quantity!
     return false if out_of_stock?
 
-    self.quantity = in_stock? ? 1 : 0
+    self.quantity = in_stock? ? 100 : 000
     self.save
   end
 

@@ -3,17 +3,18 @@ FactoryGirl.define do
     item_name 'pizza'
     category
     resident
+    quantity 200
 
     trait :in_stock do
-      quantity 5
+      quantity 200
     end
 
     trait :running_low do
-      quantity 1
+      quantity 100
     end
 
     trait :out_of_stock do
-      quantity 0
+      quantity 000
     end
   end
 end

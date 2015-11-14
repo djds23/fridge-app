@@ -16,7 +16,7 @@ RSpec.describe GroceriesController, type: :controller do
   end
 
   describe 'POST up_quantity!' do
-    let(:grocery) { FactoryGirl.create(:grocery, quantity: 0) }
+    let(:grocery) { FactoryGirl.create(:grocery, quantity: 000) }
     it 'properly increments the quantity' do
       post :quantity, format: 'json', grocery: { id: grocery.id, direction: 'up' }
       expect(grocery.reload.running_low?).to be_truthy
@@ -24,7 +24,7 @@ RSpec.describe GroceriesController, type: :controller do
   end
 
   describe 'POST down_quantity!' do
-    let(:grocery) { FactoryGirl.create(:grocery, quantity: 5) }
+    let(:grocery) { FactoryGirl.create(:grocery, quantity: 200) }
     it 'properly increments the quantity' do
       post :quantity, format: 'json', grocery: { id: grocery.id, direction: 'down' }
       expect(grocery.reload.running_low?).to be_truthy
