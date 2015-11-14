@@ -1,1 +1,2 @@
-FridgeApp::Application.config.secret_token = '30a06e00434f21027cf78d00396fafc5ce6f638caae64b64cd50e7dbd26fbc7c96491787d25ba845c2fb073bfad958e14f7d4602c08abcf994497aa41466d3a6'
+FridgeApp::Application.config.secret_token = ENV['SECRET_TOKEN']
+

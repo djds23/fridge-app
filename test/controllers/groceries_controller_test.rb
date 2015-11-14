@@ -18,7 +18,7 @@ class GroceriesControllerTest < ActionController::TestCase
 
   test "should create grocery" do
     assert_difference('Grocery.count') do
-      post :create, grocery: { name: @grocery.name, quantity: @grocery.quantity }
+      post :create, grocery: { item_name: @grocery.item_name, quantity: @grocery.quantity }
     end
 
     assert_redirected_to grocery_path(assigns(:grocery))

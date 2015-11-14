@@ -1,14 +1,16 @@
 class GroceriesController < ApplicationController
+  before_action :set_household
   before_action :set_grocery, only: [
     :update_purchased_at, :quantity, :show, :edit, :update, :destroy
   ]
 
   # GET /groceries
   # GET /groceries.json
+  # Why does the grocery controller return a Category?
   def index
-    @in_stock = Grocery.in_stock.order(id: :desc)
-    @running_low = Grocery.running_low.order(id: :desc)
-    @out_of_stock = Grocery.out_of_stock.order(id: :desc)
+    @categories = Category.where(
+      house_hold_id: @household.id
+    ).includes(:groceries)
   end
 
   # GET /groceries/1
@@ -91,6 +93,10 @@ class GroceriesController < ApplicationController
 
   private
 
+  def set_household
+    @household = HouseHold.first
+  end
+
   def set_grocery
     grocery_id = params[:id] || params[:grocery][:id]
     @grocery = Grocery.find(grocery_id)
@@ -99,7 +105,7 @@ class GroceriesController < ApplicationController
   def grocery_params
     params.require(:grocery).permit(
       :id,
-      :name,
+      :item_name,
       :status,
       :quantity,
       :direction,

@@ -20,7 +20,7 @@
   quantityToStatus: (quantity) ->
     if quantity == 0
       'out_of_stock'
-    else if quantity == 1
+    else if quantity == 100
       'running_low'
     else
       'in_stock'
@@ -34,7 +34,7 @@
     @updateQuantity('down')
 
   updateQuantity: (direction) ->
-    cant_go_up = @props.grocery.quantity == 5 and direction == 'up'
+    cant_go_up = @props.grocery.quantity == 200 and direction == 'up'
     cant_go_down = @props.grocery.quantity == 0 and direction == 'down'
     if cant_go_up or cant_go_down
       return
@@ -56,5 +56,5 @@
       className: 'row grocery ' + @getQuantityString()
       React.DOM.li
         className: 'text-center'
-        @props.grocery.name
+        @props.grocery.item_name
 

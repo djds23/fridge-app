@@ -13,7 +13,7 @@
   # This method is not the best way to do this.
   # The problem here is we do not get rails notices.
   deleteGrocery: ->
-    if confirm('Delete ' + @state.grocery.name)
+    if confirm('Delete ' + @state.grocery.item_name)
       $.ajax(
         url: '/groceries/' + @state.grocery.id,
         method: 'DELETE'
@@ -25,7 +25,7 @@
     if @state.grocery.purchased_date
       React.DOM.p
         className: 'grocery'
-        @state.grocery.name + ' was purchased on ' + @state.grocery.purchased_date + '.'
+        @state.grocery.item_name + ' was purchased on ' + @state.grocery.purchased_date + '.'
     else
       null
 
@@ -33,7 +33,7 @@
     React.DOM.div null,
       React.DOM.p
         className: 'grocery'
-        @state.grocery.name
+        @state.grocery.item_name
       React.DOM.p
         className: 'grocery'
         @state.grocery.status

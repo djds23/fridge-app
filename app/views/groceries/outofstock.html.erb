@@ -13,7 +13,7 @@
     <tbody>
       <% @groceries.each do |grocery| %>
         <tr data-gid="<%= grocery.id %>">
-          <td><%= grocery.name %></td>
+          <td><%= grocery.item_name %></td>
           <td><%= grocery.resident.try(:username) %></td>
         </tr>
       <% end %>
