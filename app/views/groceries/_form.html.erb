@@ -19,12 +19,17 @@
   </div>
   <div class="row">
     <div class='form_element'>
-      <%= f.select :quantity, options_for_select(@grocery.options) %> 
+      <%= f.select :quantity, options_for_select(@grocery.options) %>
     </div>
   </div>
   <div class="row">
     <div class='form_element'>
-      <%= f.select :resident_id, options_for_select(@residents.map{ |r| [r.username, r.id]}) %> 
+      <%= f.select :resident_id, options_for_select(@residents.map{ |r| [r.username, r.id]}) %>
+    </div>
+  </div>
+  <div class="row">
+    <div class='form_element'>
+      <%= f.select :category_id, options_for_select(@categories.map{ |c| [c.name, c.id]}) %>
     </div>
   </div>
   <div class="row">

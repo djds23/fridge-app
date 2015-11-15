@@ -1,5 +1,6 @@
 class GroceriesController < ApplicationController
   before_action :set_household
+  before_action :set_categories
   before_action :set_grocery, only: [
     :update_purchased_at, :quantity, :show, :edit, :update, :destroy
   ]
@@ -8,9 +9,6 @@ class GroceriesController < ApplicationController
   # GET /groceries.json
   # Why does the grocery controller return a Category?
   def index
-    @categories = Category.where(
-      house_hold_id: @household.id
-    ).includes(:groceries)
   end
 
   # GET /groceries/1
@@ -97,6 +95,10 @@ class GroceriesController < ApplicationController
     @household = HouseHold.first
   end
 
+  def set_categories
+    @categories = Category.where(house_hold_id: @household.id)
+  end
+
   def set_grocery
     grocery_id = params[:id] || params[:grocery][:id]
     @grocery = Grocery.find(grocery_id)
@@ -112,6 +114,7 @@ class GroceriesController < ApplicationController
       :updated_at,
       :created_at,
       :resident_id,
+      :category_id,
       :purchased_at,
       :purchased_date,
     )
