@@ -15,10 +15,10 @@
 //= require foundation
 //= require hammer
 //= require lodash
-//= require notie.js
 //= require react
 //= require react_ujs
 //= require components
+//= require notie.js
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
