@@ -15,7 +15,7 @@
 //= require foundation
 //= require hammer
 //= require lodash
-//= require notie-rails
+//= require notie.js
 //= require react
 //= require react_ujs
 //= require components
