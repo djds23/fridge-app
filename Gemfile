@@ -17,7 +17,7 @@ gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 gem 'react-rails', '~> 1.0'
 gem 'capistrano-rails', group: :development
-gem 'notie-rails'
+gem 'notie-rails', '~> 2.0.1'
 gem 'passenger'
 
 group :development, :test do
