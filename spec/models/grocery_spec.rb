@@ -20,13 +20,7 @@ RSpec.describe Grocery, :type => :model do
     let(:out_of_pizza) { FactoryGirl.create(:grocery, quantity: 000) }
     it "properly raises quantity" do
       out_of_pizza.up_quantity!
-      expect(out_of_pizza.quantity).to eq(100)
-
-      out_of_pizza.up_quantity!
-      expect(out_of_pizza.quantity).to eq(200)
-
-      out_of_pizza.up_quantity!
-      expect(out_of_pizza.quantity).to eq(200)
+      expect(out_of_pizza.in_stock!).to be_truthy
     end
   end
 
@@ -53,21 +47,44 @@ RSpec.describe Grocery, :type => :model do
   end
 
   describe 'status methods' do
-    let(:grocery) { FactoryGirl.create(:grocery) }
-    it 'is out of stock' do
-      grocery.update_column(:quantity, 000)
-      expect(grocery.out_of_stock?).to be_truthy
+    describe 'that test current status' do
+      let(:grocery) { FactoryGirl.create(:grocery) }
+      it 'is out of stock' do
+        grocery.update_column(:quantity, 000)
+        expect(grocery.out_of_stock?).to be_truthy
+      end
+
+      it 'is running low' do
+        grocery.update_column(:quantity, 100)
+        expect(grocery.running_low?).to be_truthy
+      end
+
+
+      it 'is in stock' do
+        grocery.update_column(:quantity, 200)
+        expect(grocery.in_stock?).to be_truthy
+      end
     end
 
-    it 'is running low' do
-      grocery.update_column(:quantity, 100)
-      expect(grocery.running_low?).to be_truthy
-    end
+    describe 'that update quantity' do
+      let(:grocery) { FactoryGirl.create(:grocery) }
+      it 'updates to in_stock' do
+        grocery.update_column(:quantity, 000)
+        grocery.in_stock!
+        expect(grocery.in_stock?).to be_truthy
+      end
 
+      it 'updates to running_low' do
+        grocery.update_column(:quantity, 000)
+        grocery.running_low!
+        expect(grocery.running_low?).to be_truthy
+      end
 
-    it 'is in stock' do
-      grocery.update_column(:quantity, 200)
-      expect(grocery.in_stock?).to be_truthy
+      it 'updates to out_of_stock' do
+        grocery.update_column(:quantity, 200)
+        grocery.out_of_stock!
+        expect(grocery.out_of_stock?).to be_truthy
+      end
     end
   end
 end

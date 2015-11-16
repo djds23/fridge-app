@@ -4,7 +4,7 @@ TODO:
   * Just make a category component with a grocerylist child for consistency
     * not sure that is a great idea, it will cause far more network calls
   * make consistent naming between `household_id` and `house_hold_id`
-  * easier to use /new/ form (add category to form)
+  * easier to use /new/ form
   * way to hide/delete old groceries
   * a detailed view you should hold or double tap to navigate to
   * deployment with capistrano

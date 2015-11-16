@@ -61,6 +61,14 @@ class Grocery < ActiveRecord::Base
     end
   end
 
+  Quantities.status_hash.each do |value, status|
+    method_name = status.to_s.downcase << '!'
+    define_method(method_name) do
+      update(quantity: value)
+    end
+  end
+
+
   def options
     Quantities.status_hash.map do |quantity, status|
       [Quantities.const_get(status), quantity]
@@ -76,8 +84,7 @@ class Grocery < ActiveRecord::Base
   def up_quantity!
     return false if in_stock?
 
-    self.quantity = out_of_stock? ? 100 : 200
-    self.save
+    self.in_stock!
   end
 
   def down_quantity!

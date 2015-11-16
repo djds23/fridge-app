@@ -11,7 +11,7 @@ RSpec.describe GroceriesController, type: :controller do
     it 'Creates a properly formatted hash' do
       get :index
       categories = controller.instance_variable_get(:@categories)
-      categories.count.should == Category.where(id: category.id).count
+      expect(categories.count).to eq(Category.where(id: category.id).count)
     end
   end
 
@@ -19,7 +19,7 @@ RSpec.describe GroceriesController, type: :controller do
     let(:grocery) { FactoryGirl.create(:grocery, quantity: 000) }
     it 'properly increments the quantity' do
       post :quantity, format: 'json', grocery: { id: grocery.id, direction: 'up' }
-      expect(grocery.reload.running_low?).to be_truthy
+      expect(grocery.reload.in_stock?).to be_truthy
     end
   end
 
