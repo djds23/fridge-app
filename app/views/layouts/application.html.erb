@@ -4,7 +4,6 @@
   <title>FridgeApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'vendor/modernizr' %>
-  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,4 +11,5 @@
     <%= yield %>
   </div>
 </body>
+  <%= javascript_include_tag 'application' %>
 </html>
