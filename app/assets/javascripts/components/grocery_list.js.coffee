@@ -21,9 +21,7 @@ Grocery = React.createFactory(@Grocery)
     new_object = {}
     new_object[old_status] = cleaned_array.sort(compare)
     new_object[new_status] = new_array.sort(compare)
-    if new_status == 'in_stock'
-      notie.alert(1, new_grocery.item_name + ' is in stock!', 1.5)
-
+    notie.alert(1, new_grocery.item_name + ' is in stock!', 1.5) if new_grocery.quantity == 200
     @setState(new_object)
 
   render: ->
