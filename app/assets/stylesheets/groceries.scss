@@ -23,31 +23,7 @@ $in-stock-color: #b2d8b2;
 }
 
 .grocery {
-  font-size: 5em;
-  line-height: 2.2em;
-}
-
-.form_element { 
-  @media only screen and (max-width: 40em) { 
-    max-width: 22em;
-  }
-}
-
-.slider-enter {
-  opacity: 0.01;
-}
-
-.slider-enter.slider-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-
-.slider-leave {
-  opacity: 1;
-}
-
-.slider-leave.slider-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
+  font-size: 5.2em;
+  line-height: 2.4em;
 }
 

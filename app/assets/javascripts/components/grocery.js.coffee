@@ -15,6 +15,7 @@
     @quantityToStatus(@props.grocery.quantity)
 
   onDoubleTap: (event) ->
+    # TODO: fix this event, it currently never fires
     alert('We have been double tapped')
 
   quantityToStatus: (quantity) ->

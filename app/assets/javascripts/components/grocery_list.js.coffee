@@ -17,11 +17,11 @@ Grocery = React.createFactory(@Grocery)
 
     new_array = @state[new_status].slice()
     new_array.push(new_grocery)
-
+    #'<h1>' + new_grocery.item_name + ' is in stock!</h1>'
     new_object = {}
     new_object[old_status] = cleaned_array.sort(compare)
     new_object[new_status] = new_array.sort(compare)
-    notie.alert(1, new_grocery.item_name + ' is in stock!', 1.5) if new_grocery.quantity == 200
+    notie.alert(1, '<h1>' + new_grocery.item_name + ' is in stock!</h1>', 1.5) if new_grocery.quantity == 200
     @setState(new_object)
 
   render: ->
