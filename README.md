@@ -1,6 +1,7 @@
 *mangia mangia mangia mangia mangia!*
 
 TODO:
+  * remove zurb foundation, replace with bourbon/neat/bitters
   * Just make a category component with a grocerylist child for consistency
     * not sure that is a great idea, it will cause far more network calls
   * make consistent naming between `household_id` and `house_hold_id`
