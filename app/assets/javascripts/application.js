@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
 //= require hammer
 //= require lodash
 //= require react
@@ -20,6 +19,4 @@
 //= require components
 //= require notie.js
 //= require_tree .
-
-$(function(){ $(document).foundation(); });
 
