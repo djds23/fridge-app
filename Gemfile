@@ -15,7 +15,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'react-rails', '~> 1.0'
 gem 'capistrano-rails', group: :development
-gem 'notie-rails', '~> 2.0.1'
+gem 'notie-rails', '~> 2.1.0'
 gem 'passenger'
 
 group :development, :test do
