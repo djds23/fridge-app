@@ -39,10 +39,8 @@
         @state.grocery.status
       @purchasedAt()
       React.DOM.button
-        className: 'button large',
         onClick: @updatePurchasedAt
         'Update Purchased Date'
       React.DOM.button
-        className: 'button large alert',
         onClick: @deleteGrocery
         'Delete Grocery'

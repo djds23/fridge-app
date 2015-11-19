@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
   <% @categories.each do |category| %>
     <%= react_component 'GroceryList', {
-      list_name: category.name, 
+      list_name: category.name,
       in_stock: category.groceries.in_stock,
       running_low: category.groceries.running_low,
       out_of_stock: category.groceries.out_of_stock,
     } %>
   <% end %>
 <br>
-<div class='row'>
-  <%= link_to 'Something new?', new_grocery_path, id: 'new-grocery', class: 'button' %>
-</div>
+
+<%= link_to 'Something new?', new_grocery_path, id: 'new-grocery' %>
+

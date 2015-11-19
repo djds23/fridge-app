@@ -11,35 +11,24 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class=''>
-      <%= f.label :item_name %><br>
-      <%= f.text_field :item_name %>
-    </div>
+  <div class="">
+    <%= f.label :item_name %><br>
+    <%= f.text_field :item_name %>
   </div>
-  <div class="row">
-    <div class=''>
-      <%= f.select :quantity, options_for_select(@grocery.options) %>
-    </div>
+  <div class="">
+    <%= f.select :quantity, options_for_select(@grocery.options) %>
   </div>
-  <div class="row">
-    <div class=''>
-      <%= f.select :resident_id, options_for_select(@residents.map{ |r| [r.username, r.id]}) %>
-    </div>
+  <div class=''>
+    <%= f.select :resident_id, options_for_select(@residents.map{ |r| [r.username, r.id]}) %>
   </div>
-  <div class="row">
-    <div class=''>
-      <%= f.select :category_id, options_for_select(@categories.map{ |c| [c.name, c.id]}) %>
-    </div>
+  <div class=''>
+    <%= f.select :category_id, options_for_select(@categories.map{ |c| [c.name, c.id]}) %>
   </div>
-  <div class="row">
-    <div class=''>
-      <%= f.submit class: 'button expand' %>
-    </div>
+  <div class=''>
+    <%= f.submit %>
   </div>
-  <div class='row'>
-    <div class=''>
-      <%= link_to 'Back', groceries_path, class: 'button expand' %>
-    </div>
+  <div class=''>
+    <%= link_to 'Back', groceries_path %>
   </div>
 <% end %>
+
