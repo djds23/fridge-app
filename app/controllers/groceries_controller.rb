@@ -1,5 +1,5 @@
 class GroceriesController < ApplicationController
-  before_action :set_household
+  
   before_action :set_categories
   before_action :set_grocery, only: [
     :update_purchased_at, :quantity, :show, :edit, :update, :destroy
@@ -90,10 +90,6 @@ class GroceriesController < ApplicationController
   end
 
   private
-
-  def set_household
-    @household = HouseHold.first
-  end
 
   def set_categories
     @categories = Category.where(house_hold_id: @household.id)
