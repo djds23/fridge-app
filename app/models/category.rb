@@ -13,5 +13,17 @@
 class Category < ActiveRecord::Base
   has_many :groceries
   belongs_to :house_hold
+  
+  scope :active,  -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
+
+  def enable!
+    update :active, true
+  end
+  
+  def disable!
+    update :active, false  
+  end
 end
+
 
