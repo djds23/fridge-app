@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112025731) do
+ActiveRecord::Schema.define(version: 20151121183535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20151112025731) do
   create_table "categories", force: :cascade do |t|
     t.integer  "house_hold_id"
     t.string   "name"
-    t.integer  "active"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.boolean  "active"
   end
 
   add_index "categories", ["house_hold_id"], name: "index_categories_on_house_hold_id", using: :btree

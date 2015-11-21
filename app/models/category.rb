@@ -18,11 +18,11 @@ class Category < ActiveRecord::Base
   scope :inactive, -> { where(active: false) }
 
   def enable!
-    update :active, true
+    update active: true
   end
   
   def disable!
-    update :active, false  
+    update active: false  
   end
 end
 
