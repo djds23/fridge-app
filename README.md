@@ -1,7 +1,8 @@
 *mangia mangia mangia mangia mangia!*
 
 TODO:
-  * remove zurb foundation, replace with bourbon/neat/bitters
+  * instead of a form, just tap at the bottom of the screen to make a new grocery, have default fields of in stock, current use, or use notie js to confirm user after its been created?
+  * ~remove zurb foundation, replace with bourbon/neat/bitters~ figure out what CSS framework I want to use
   * Just make a category component with a grocerylist child for consistency
     * not sure that is a great idea, it will cause far more network calls
   * make consistent naming between `household_id` and `house_hold_id`
