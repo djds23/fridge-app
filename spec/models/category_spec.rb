@@ -13,6 +13,7 @@ RSpec.describe Category, type: :model do
 
     it "does nothing to an active category" do
       category.update(active: true)
+      category.disable!
       expect(category.active).to be_falsey
     end
 
