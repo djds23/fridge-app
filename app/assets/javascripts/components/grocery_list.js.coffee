@@ -17,7 +17,7 @@ Grocery = React.createFactory(@Grocery)
 
     new_array = @state[new_status].slice()
     new_array.push(new_grocery)
-    #'<h1>' + new_grocery.item_name + ' is in stock!</h1>'
+
     new_object = {}
     new_object[old_status] = cleaned_array.sort(compare)
     new_object[new_status] = new_array.sort(compare)
